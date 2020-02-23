@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Roadmap &#8212; WASP-OS  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="WASP Internals" href="wasp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="roadmap">
+<h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="m1-dumb-watch-feature-parity">
+<h2>M1: Dumb watch feature parity<a class="headerlink" href="#m1-dumb-watch-feature-parity" title="Permalink to this headline">¶</a></h2>
+<p>The focus for M1 is to get WASP both to meet feature parity with a dumb
+watch and to have a bootloader and watchdog strategy that is robust enough
+to allow a PineTime case to be confidently glued shut.</p>
+<div class="section" id="bootloader">
+<h3>Bootloader<a class="headerlink" href="#bootloader" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[X] Basic board ports (PineTime, DS-D6, 96Boards Nitrogen)</p></li>
+<li><p>[X] OTA application update</p></li>
+<li><p>[X] Enable watchdog before starting the application</p></li>
+<li><p>[X] Splash screen</p></li>
+<li><p>[X] Ignore start button for first few seconds</p></li>
+</ul>
+</div>
+<div class="section" id="micropython">
+<h3>MicroPython<a class="headerlink" href="#micropython" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[X] Basic board ports (PineTime, DS-D6, 96Boards Nitrogen)</p></li>
+<li><p>[X] Long press reset (conditional feeding of the watchdog)</p>
+<ul>
+<li><p>[X] Feed dog from REPL polling loop</p></li>
+<li><p>[X] Feed dog from a tick interrupt</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="wasp">
+<h3>WASP<a class="headerlink" href="#wasp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[X] Display driver</p>
+<ul>
+<li><p>[X] Display initialization</p></li>
+<li><p>[X] Bitmap blitting</p></li>
+<li><p>[X] RLE coder and decoder</p></li>
+<li><p>[X] Optimized RLE inner loops</p></li>
+</ul>
+</li>
+<li><p>[X] Backlight driver</p></li>
+<li><p>[X] Button driver (polling)</p></li>
+<li><p>[X] Battery/charger driver</p></li>
+<li><p>[X] Simple clock and battery level application</p></li>
+<li><p>[X] Basic (WFI) power saving</p></li>
+<li><p>[X] Implement simple RTC for nrf52</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="m2-great-developer-experience">
+<h2>M2: Great developer experience<a class="headerlink" href="#m2-great-developer-experience" title="Permalink to this headline">¶</a></h2>
+<p>The focus for M2 is to make development faster and easier by providing
+a file system and file transfer code. This allows much faster
+development cycles compared to full downloads of frozen modules.
+Additionally support for multiple event-driven applications will be
+added during M2 to further help developers by providing example
+applications.</p>
+<div class="section" id="id1">
+<h3>Bootloader<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[ ] OTA bootloader update</p></li>
+<li><p>[ ] Stay in bootloader after battery run down</p></li>
+<li><p>[ ] Implement power off support (no splash screen)</p></li>
+<li><p>[ ] RTC time measurement whilst in bootloader</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>MicroPython<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[X] SPI FLASH driver</p></li>
+<li><p>[X] Enable LittleFS on SPI FLASH (at boot)</p></li>
+<li><p>[X] BLE file transfer</p></li>
+<li><p>[ ] Full power saving</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>WASP<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[X] Add dd/mm/yyyy support to RTC</p></li>
+<li><p>[ ] Button driver (interrupt based)</p></li>
+<li><p>[ ] Touch sensor driver</p></li>
+<li><p>[ ] Event driven application framework</p></li>
+<li><p>[ ] Stopwatch app</p></li>
+<li><p>[ ] Settings app</p></li>
+<li><p>[X] PC-hosted simulation platform</p></li>
+<li><p>[ ] Documentation</p>
+<ul>
+<li><p>[ ] Sphinx framework and integration with github.io</p></li>
+<li><p>[ ] Document bootloader protocols</p></li>
+<li><p>[ ] Write full docstring documentation for all WASP components</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="m3-smartwatch">
+<h2>M3: Smartwatch<a class="headerlink" href="#m3-smartwatch" title="Permalink to this headline">¶</a></h2>
+<p>At M3 we start to build out full fitness tracking and notification
+functionality.</p>
+<div class="section" id="id4">
+<h3>WASP<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[ ] Enable heart rate sensor</p>
+<ul>
+<li><p>[ ] HRS3300 driver</p></li>
+<li><p>[ ] HRS data post-processing</p></li>
+<li><p>[ ] Heart rate counter app</p></li>
+</ul>
+</li>
+<li><p>[ ] Notifications</p>
+<ul>
+<li><p>[ ] BLE notification protocol</p></li>
+<li><p>[ ] Notification popups</p></li>
+<li><p>[ ] Notification app (show notification history)</p></li>
+<li><p>[ ] Find a recommended Android app</p></li>
+</ul>
+</li>
+<li><p>[ ] Step counting</p>
+<ul>
+<li><p>[ ] BMA421 driver</p></li>
+<li><p>[ ] Step counter app</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WASP-OS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Watch Application System in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasp.html">WASP Internals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#m1-dumb-watch-feature-parity">M1: Dumb watch feature parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#m2-great-developer-experience">M2: Great developer experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#m3-smartwatch">M3: Smartwatch</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="wasp.html" title="previous chapter">WASP Internals</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Daniel Thompson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/TODO.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
