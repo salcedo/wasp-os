@@ -62,15 +62,21 @@
 <dl class="class">
 <dt id="clock.ClockApp">
 <em class="property">class </em><code class="sig-prename descclassname">clock.</code><code class="sig-name descname">ClockApp</code><a class="headerlink" href="#clock.ClockApp" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Simple digital clock application.</p>
+<p>Shows a time (as HH:MM) together with a battery meter and the date.</p>
+<dl class="method">
 <dt id="clock.ClockApp.draw">
 <code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param">watch</em><span class="sig-paren">)</span><a class="headerlink" href="#clock.ClockApp.draw" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Redraw the display from scratch.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="clock.ClockApp.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">watch</em><span class="sig-paren">)</span><a class="headerlink" href="#clock.ClockApp.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Update the display (if needed).</p>
+<p>The updates are a lazy as possible and rely on an prior call to
+draw() to ensure the screen is suitably prepared.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -158,37 +164,36 @@
 <dl class="class">
 <dt id="draw565.Draw565">
 <em class="property">class </em><code class="sig-prename descclassname">draw565.</code><code class="sig-name descname">Draw565</code><span class="sig-paren">(</span><em class="sig-param">display</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.Draw565" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Drawing library for RGB565 displays.</p>
+<p>A full framebufer is not required although the library will
+‘borrow’ a line buffer from the underlying display driver.</p>
+<dl class="method">
 <dt id="draw565.Draw565.set_color">
 <code class="sig-name descname">set_color</code><span class="sig-paren">(</span><em class="sig-param">color</em>, <em class="sig-param">bg=0</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.Draw565.set_color" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the foreground (color) and background (bg) color.</p>
+<p>The supplied color will be used for all monochrome drawing operations.
+If no background color is provided then the background will be set
+to black.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="draw565.Draw565.set_font">
 <code class="sig-name descname">set_font</code><span class="sig-paren">(</span><em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.Draw565.set_font" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the font used for rendering text.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="draw565.Draw565.string">
 <code class="sig-name descname">string</code><span class="sig-paren">(</span><em class="sig-param">s</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">width=None</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.Draw565.string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>Draw a string at the supplied position.</p>
+<p>If no width is provided then the text will be left justified,
+otherwise the text will be centered within the provided width and,
+importantly, the remaining width will be filled with the background
+color (to ensure that if we update one string with a narrower one
+there is no need to “undraw” it)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="draw565.bitblit">
-<code class="sig-prename descclassname">draw565.</code><code class="sig-name descname">bitblit</code><span class="sig-paren">(</span><em class="sig-param">bitbuf</em>, <em class="sig-param">pixels</em>, <em class="sig-param">bgfg: int</em>, <em class="sig-param">count: int</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.bitblit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="draw565.bounding_box">
-<code class="sig-prename descclassname">draw565.</code><code class="sig-name descname">bounding_box</code><span class="sig-paren">(</span><em class="sig-param">s</em>, <em class="sig-param">font</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.bounding_box" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="draw565.draw_glyph">
-<code class="sig-prename descclassname">draw565.</code><code class="sig-name descname">draw_glyph</code><span class="sig-paren">(</span><em class="sig-param">display</em>, <em class="sig-param">glyph</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">bgfg</em><span class="sig-paren">)</span><a class="headerlink" href="#draw565.draw_glyph" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+</dd></dl>
 
 </div>
 </div>
