@@ -43,8 +43,13 @@ dfu:
 	python3 -m nordicsemi dfu serial --package micropython.zip --port /dev/ttyACM0
 
 flash:
-	pyocd erase -t nrf52 --mass-erase
-	pyocd flash -t nrf52 bootloader.hex
+	openocd -c 'source [find interface/jlink.cfg]; transport select swd; source [find target/nrf52.cfg]' \
+		-c init \
+	-c 'reset halt' \
+	-c 'nrf5 mass_erase' \
+	-c 'program bootloader.hex verify' \
+	-c reset \
+	-c exit
 
 debug:
 	arm-none-eabi-gdb \

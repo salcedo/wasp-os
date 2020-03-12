@@ -10,6 +10,7 @@ click = "*"
 pyserial = "*"
 ecdsa = "*"
 pexpect = "*"
+pillow = "*"
 
 [requires]
 python_version = "3"
